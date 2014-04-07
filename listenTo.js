@@ -128,7 +128,7 @@ define([
    */
   ListenToFacet.prototype.listenTo = function(target, topic, handler, transformer) {
     this.listener_.listenTo(target, topic, _.bind(function(var_params) {
-      var args = _.argsToArray(arguments);
+      var args = Array.prototype.slice.call(arguments, 0);
       var tranformedParams = transformer.apply(transformer, args);
       handler.call(this.listener_, tranformedParams);
     }, this))
